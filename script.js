@@ -19,32 +19,23 @@ const audioPlayer = document.getElementById('audio-player');
 const audioSource = document.getElementById('audio-source');
 const disks = document.querySelectorAll('.disk');
 
-
 // 요소 가져오기
-const editProfileBtn = document.getElementById('edit-profile-btn');
-const profileEditContainer = document.getElementById('profile-edit-container');
-const profileName = document.getElementById('profile-name');
-const profileEmoji = document.getElementById('profile-emoji');
-const profileNameInput = document.getElementById('profile-name-input');
-const profileEmojiSelect = document.getElementById('profile-emoji-select');
-const saveProfileBtn = document.getElementById('save-profile-btn');
-
-// 요소 가져오기
-const togglePlaylistBtn = document.getElementById('toggle-playlist-btn');
+const playlistMenuItem = document.querySelector('.menu li:nth-child(2)'); // "♫ My PlayList" 메뉴 항목
 const playlistFolder = document.getElementById('playlist-folder');
 const playlistItems = document.querySelectorAll('#playlist-folder li');
+const settingsItem = document.querySelector('.menu li:nth-child(6)'); // "Settings" 메뉴 항목
 
-// 버튼 클릭 시 폴더 열림/닫힘 토글
-togglePlaylistBtn.addEventListener('click', () => {
-  playlistFolder.classList.toggle('open'); // CSS 클래스 토글
+// "♫ My PlayList" 클릭 시 폴더 열림/닫힘 토글
+playlistMenuItem.addEventListener('click', () => {
+  playlistFolder.classList.toggle('open'); // 폴더 열기/닫기
+
+ 
 });
 
 // 리스트 아이템 클릭 시 노래 재생
 playlistItems.forEach((item) => {
   item.addEventListener('click', () => {
     const audioSrc = item.dataset.audio; // 데이터 속성에서 오디오 경로 가져오기
-    const trackTitle = document.getElementById('title');
-    const trackArtist = document.getElementById('artist');
 
     // 음악 정보 업데이트
     trackTitle.textContent = item.textContent.split(' - ')[0]; // 제목
@@ -54,20 +45,19 @@ playlistItems.forEach((item) => {
   });
 });
 
-  
-  // 자세히 보기 버튼 클릭 이벤트
-  viewPlaylistBtn.addEventListener('click', () => {
-    playlistFolder.classList.toggle('open');
-    viewPlaylistBtn.classList.toggle('open');
-  });
-  
-
 // Edit 버튼 클릭 시 프로필 수정 창 표시/숨기기
+const editProfileBtn = document.getElementById('edit-profile-btn');
+const profileEditContainer = document.getElementById('profile-edit-container');
+const profileName = document.getElementById('profile-name');
+const profileEmoji = document.getElementById('profile-emoji');
+const profileNameInput = document.getElementById('profile-name-input');
+const profileEmojiSelect = document.getElementById('profile-emoji-select');
+const saveProfileBtn = document.getElementById('save-profile-btn');
+
 editProfileBtn.addEventListener('click', () => {
   profileEditContainer.classList.toggle('hidden');
 });
 
-// Save 버튼 클릭 시 프로필 정보 업데이트
 saveProfileBtn.addEventListener('click', () => {
   const newName = profileNameInput.value.trim();
   const newEmoji = profileEmojiSelect.value;
@@ -80,7 +70,6 @@ saveProfileBtn.addEventListener('click', () => {
   // 프로필 편집 창 닫기
   profileEditContainer.classList.add('hidden');
 });
-
 
 function updateTrackInfo(index) {
     const track = diskData[index + 1];
@@ -117,7 +106,6 @@ function togglePlayPause(diskId = null) {
 
     isPlaying = !isPlaying;
 }
-
 
 function stopOtherDisks() {
     disks.forEach((disk, index) => {

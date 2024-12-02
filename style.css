@@ -302,49 +302,27 @@
   transform: rotate(180deg); /* 버튼 회전 */
 }
 
-/* 플레이리스트 폴더 스타일 수정 */
-.playlist-folder {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease-in-out, padding 0.3s ease-in-out;
-  background-color: #f9f9f9;
-  margin: 0; /* 상단 여백 제거 */
-  padding: 0 10px; /* 폴더 내부 여백 조정 */
-  border-radius: 5px;
-}
-
-.playlist-folder.open {
-  max-height: 200px; /* 적절한 높이로 설정 */
-  padding: 10px; /* 펼쳐질 때 내부 여백 추가 */
-}
-
-.menu {
-  position: relative; /* 메뉴의 위치를 기준으로 플레이리스트 제한 */
-}
-
-#my-playlist-item {
-  position: relative; /* My Playlist 항목을 기준으로 설정 */
-}
-
-/* 폴더가 My PlayList 아래에 붙어 있도록 위치 고정 */
-#playlist-folder {
-  position: absolute;
-  top: 100%; /* My PlayList 바로 아래로 */
-  left: 0;
-  width: 100%;
-  z-index: 1;
-}
-
-
-
 /* 폴더 숨김 기본 상태 */
 #playlist-folder {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease-in-out;
+  transition: max-height 0.5s ease-in-out, margin-bottom 0.5s ease-in-out;
+  margin-bottom: 0;
 }
 
 /* 폴더 열림 상태 */
 #playlist-folder.open {
-  max-height: 150px; /* 폴더가 열릴 때 높이 */
+  max-height: 150px; /* 열릴 때 폴더의 최대 높이 */
+  margin-bottom: 20px; /* 다른 메뉴와 간격 */
+}
+
+/* 메뉴 리스트 아이템 간격 */
+.menu ul li {
+  margin-bottom: 10px; /* 기본 간격 */
+  transition: margin-bottom 0.5s ease-in-out;
+}
+
+/* 폴더가 열릴 때 아래 메뉴와의 간격을 조정 */
+.menu ul li#settings-item {
+  transition: margin-top 0.5s ease-in-out;
 }

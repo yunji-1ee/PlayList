@@ -19,6 +19,69 @@ const audioPlayer = document.getElementById('audio-player');
 const audioSource = document.getElementById('audio-source');
 const disks = document.querySelectorAll('.disk');
 
+
+// 요소 가져오기
+const editProfileBtn = document.getElementById('edit-profile-btn');
+const profileEditContainer = document.getElementById('profile-edit-container');
+const profileName = document.getElementById('profile-name');
+const profileEmoji = document.getElementById('profile-emoji');
+const profileNameInput = document.getElementById('profile-name-input');
+const profileEmojiSelect = document.getElementById('profile-emoji-select');
+const saveProfileBtn = document.getElementById('save-profile-btn');
+
+// 요소 가져오기
+const togglePlaylistBtn = document.getElementById('toggle-playlist-btn');
+const playlistFolder = document.getElementById('playlist-folder');
+const playlistItems = document.querySelectorAll('#playlist-folder li');
+
+// 버튼 클릭 시 폴더 열림/닫힘 토글
+togglePlaylistBtn.addEventListener('click', () => {
+  playlistFolder.classList.toggle('open'); // CSS 클래스 토글
+});
+
+// 리스트 아이템 클릭 시 노래 재생
+playlistItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    const audioSrc = item.dataset.audio; // 데이터 속성에서 오디오 경로 가져오기
+    const trackTitle = document.getElementById('title');
+    const trackArtist = document.getElementById('artist');
+
+    // 음악 정보 업데이트
+    trackTitle.textContent = item.textContent.split(' - ')[0]; // 제목
+    trackArtist.textContent = item.textContent.split(' - ')[1]; // 아티스트
+    audioPlayer.src = audioSrc; // 오디오 경로 설정
+    audioPlayer.play(); // 재생
+  });
+});
+
+  
+  // 자세히 보기 버튼 클릭 이벤트
+  viewPlaylistBtn.addEventListener('click', () => {
+    playlistFolder.classList.toggle('open');
+    viewPlaylistBtn.classList.toggle('open');
+  });
+  
+
+// Edit 버튼 클릭 시 프로필 수정 창 표시/숨기기
+editProfileBtn.addEventListener('click', () => {
+  profileEditContainer.classList.toggle('hidden');
+});
+
+// Save 버튼 클릭 시 프로필 정보 업데이트
+saveProfileBtn.addEventListener('click', () => {
+  const newName = profileNameInput.value.trim();
+  const newEmoji = profileEmojiSelect.value;
+
+  if (newName) {
+    profileName.textContent = newName;
+  }
+  profileEmoji.textContent = newEmoji;
+
+  // 프로필 편집 창 닫기
+  profileEditContainer.classList.add('hidden');
+});
+
+
 function updateTrackInfo(index) {
     const track = diskData[index + 1];
     trackTitle.textContent = track.title;
@@ -44,16 +107,17 @@ function togglePlayPause(diskId = null) {
     if (isPlaying) {
         audioPlayer.pause();
         albumImage.classList.remove('spin');
-        playIcon.src = 'play_btn.png'; // 재생 버튼 이미지로 변경
+        playIcon.src = 'img/play_btn.png'; // 재생 버튼 이미지로 변경
     } else {
         stopOtherDisks(); // 기존 곡 정지
         audioPlayer.play();
         albumImage.classList.add('spin');
-        playIcon.src = 'pause_btn.png'; // 일시정지 버튼 이미지로 변경
+        playIcon.src = 'img/pause_btn.png'; // 일시정지 버튼 이미지로 변경
     }
 
     isPlaying = !isPlaying;
 }
+
 
 function stopOtherDisks() {
     disks.forEach((disk, index) => {
@@ -66,7 +130,7 @@ function stopOtherDisks() {
     audioPlayer.pause(); // 기존 재생 중지
     isPlaying = false; // 재생 상태 초기화
     const playIcon = document.getElementById('play-icon');
-    playIcon.src = 'play_btn.png'; // 재생 버튼 이미지로 초기화
+    playIcon.src = 'img/play_btn.png'; // 재생 버튼 이미지로 초기화
 }
 
 function updateProgress() {

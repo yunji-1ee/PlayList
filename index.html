@@ -7,25 +7,117 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- 로고 추가 -->
+  <!-- 오른쪽 메뉴 -->
+  <div id="dashboard-container">
+    <div class="rightside-menu">
+      <div class="avatar">
+        <div class="icon"><p id="profile-emoji">👩🏻‍🦰</p></div>
+        <p id="profile-name">Leeyunji</p>
+        <button id="edit-profile-btn" class="edit-btn">✏️</button>
+        <div id="profile-edit-container" class="profile-edit-container hidden">
+          <label for="profile-emoji-select">Choose Emoji:</label>
+          <select id="profile-emoji-select" class="scrollable-emoji">
+            <optgroup label="Female">
+              <option value="👩🏻‍🦰">👩🏻‍🦰</option>
+              <option value="👩🏻">👩🏻</option>
+              <option value="👩🏻‍🦱">👩🏻‍🦱</option>
+              <option value="👩🏻‍🦳">👩🏻‍🦳</option>
+              <option value="👩🏻‍🦲">👩🏻‍🦲</option>
+            </optgroup>
+            <optgroup label="Male">
+              <option value="🧑🏻">🧑🏻</option>
+              <option value="👱🏻">👱🏻</option>
+              <option value="🧔🏻">🧔🏻</option>
+              <option value="🧑🏻‍🦱">🧑🏻‍🦱</option>
+              <option value="👨🏻‍🦰">👨🏻‍🦰</option>
+              <option value="👨🏻‍🦱">👨🏻‍🦱</option>
+              <option value="👨🏻‍🦳">👨🏻‍🦳</option>
+              <option value="👨🏻‍🦲">👨🏻‍🦲</option>
+            </optgroup>
+            <optgroup label="Jobs">
+              <option value="🧑‍🍳">🧑‍🍳</option>
+              <option value="👨‍🎨">👨‍🎨</option>
+              <option value="👩‍🎨">👩‍🎨</option>
+              <option value="🧑‍🔬">🧑‍🔬</option>
+              <option value="👮🏻‍♀️">👮🏻‍♀️</option>
+              <option value="👩🏻‍⚕️">👩🏻‍⚕️</option>
+              <option value="👩🏻‍💻">👩🏻‍💻</option>
+            </optgroup>
+          </select>
+          
+          </select>
+          <label for="profile-name-input">Enter Name:</label>
+          <input id="profile-name-input" type="text" placeholder="Enter new name">
+          <button id="save-profile-btn" class="save-btn">Save</button>
+        </div>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li class="active">🏠 Home</li>
+          <!-- My PlayList 항목에 자세히 보기 버튼 추가 -->
+            <li id="my-playlist-item">
+              ♫ My PlayList
+              <button id="toggle-playlist-btn">🔽</button>
+              <div id="playlist-folder" class="playlist-folder">
+                <ul>
+                  <li data-audio="Supernatural.mp3">Supernatural - NewJeans</li>
+                  <li data-audio="up.mp3">UP - KARINA (Solo)</li>
+                  <li data-audio="미리메리크리스마스.mp3">미리 메리 크리스마스 - 아이유(IU)</li>
+                </ul>
+              </div>
+            </li>
+            
+          </li>
+          <li>➕ Add PlayList</li>
+          <li>🔎 Search</li>
+          <li>Skills</li>
+          <li>⚙️ Settings</li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+<!-- 플레이리스트 폴더 (My PlayList 아래) -->
+<div id="playlist-folder" class="playlist-folder hidden">
+  <ul id="playlist-songs">
+    <!-- JavaScript로 제목 추가 -->
+  </ul>
+</div>
+
+
+<!-- 플레이리스트 섹션 -->
+<div id="playlist-folder" class="playlist-folder hidden">
+  <ul id="playlist-songs">
+    <!-- JavaScript로 제목 추가 -->
+  </ul>
+</div>
+
+  <!-- 로고 -->
   <header class="header">
-    <img src="logo.png" alt="Logo" class="logo">
+    <img src="img/logo.png" alt="Logo" class="logo">
   </header>
+
+  <!-- 메인 컨테이너 -->
   <div class="container">
-    <div class="album-art-container">
+    <div class="album-art-container scrollable">
       <div id="disk1" class="disk">
-        <img class="lp-image" src="IMG_lp.PNG" alt="Disk 1">
+        <img class="lp-image" src="img/IMG_lp.PNG" alt="Disk 1">
         <img class="album-image" src="https://image.bugsm.co.kr/album/images/200/41027/4102781.jpg" alt="Album 1">
       </div>
       <div id="disk2" class="disk">
-        <img class="lp-image" src="IMG_lp.PNG" alt="Disk 2">
+        <img class="lp-image" src="img/IMG_lp.PNG" alt="Disk 2">
         <img class="album-image" src="https://image.bugsm.co.kr/album/images/200/41082/4108280.jpg" alt="Album 2">
       </div>
       <div id="disk3" class="disk">
-        <img class="lp-image" src="IMG_lp.PNG" alt="Disk 3">
+        <img class="lp-image" src="img/IMG_lp.PNG" alt="Disk 3">
         <img class="album-image" src="https://image.bugsm.co.kr/album/images/200/2499/249930.jpg" alt="Album 3">
       </div>
+      <div id="disk4" class="disk">
+        <img class="lp-image" src="img/IMG_lp.PNG" alt="Disk 4">
+        <img class="album-image" src="https://image.bugsm.co.kr/album/images/200/41027/4102782.jpg" alt="Album 4">
+      </div>
     </div>
+    
     <div class="player-container">
       <div class="track-info">
         <h1 id="title">Title</h1>
@@ -36,25 +128,25 @@
         <input id="progress-bar" type="range" min="0" max="100" value="0">
         <span id="total-time">0:00</span>
       </div>
-      
       <div class="controls">
         <button id="prev-btn" class="control-btn">
-          <img src="pre_btn.png" alt="Previous" class="control-icon">
+          <img src="img/pre_btn.png" alt="Previous" class="control-icon">
         </button>
         <button id="play-pause-btn" class="control-btn">
-          <img src="play_btn.png" alt="Play" class="control-icon" id="play-icon">
+          <img src="img/play_btn.png" alt="Play" class="control-icon" id="play-icon">
         </button>
         <button id="next-btn" class="control-btn">
-          <img src="next_btn.png" alt="Next" class="control-icon">
+          <img src="img/next_btn.png" alt="Next" class="control-icon">
         </button>
       </div>
-      
     </div>
+    
     <audio id="audio-player">
       <source id="audio-source" src="" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
